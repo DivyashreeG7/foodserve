@@ -17,8 +17,18 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 connectDB();
 
-// Middleware
-app.use(cors());
+// Middleware - Updated CORS Configuration
+app.use(cors({
+  origin: [
+    'https://foodserve-frontend.onrender.com',  // Production frontend
+    'http://localhost:5173',                     // Local Vite dev server
+    'http://localhost:3000'                      // Alternative local port
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 // Routes
