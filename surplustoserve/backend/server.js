@@ -39,6 +39,10 @@ app.use('/api/events', eventRoutes);
 app.use('/api/history', historyRoutes);
 app.use('/api/stats', statsRoutes);
 
+app.get('/', (req, res) => {
+  res.json({ message: 'Server is running' });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
