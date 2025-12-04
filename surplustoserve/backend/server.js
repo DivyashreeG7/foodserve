@@ -17,18 +17,8 @@ const PORT = process.env.PORT || 5000;
 // Connect to MongoDB
 connectDB();
 
-// Middleware - Updated CORS Configuration
-app.use(cors({
-  origin: [
-    'https://foodserve-frontend.onrender.com',
-    'https://foodserve-vercel.vercel.app',  // Production frontend
-    'http://localhost:5173',                     // Local Vite dev server
-    'http://localhost:3000'                      // Alternative local port
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+// Middleware - Simple CORS Configuration
+app.use(cors());
 
 app.use(express.json());
 
