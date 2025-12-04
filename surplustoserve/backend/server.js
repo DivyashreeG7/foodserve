@@ -20,7 +20,8 @@ connectDB();
 // Middleware - Updated CORS Configuration
 app.use(cors({
   origin: [
-    'https://foodserve-frontend.onrender.com',  // Production frontend
+    'https://foodserve-frontend.onrender.com',
+    'https://foodserve-vercel.vercel.app',  // Production frontend
     'http://localhost:5173',                     // Local Vite dev server
     'http://localhost:3000'                      // Alternative local port
   ],
