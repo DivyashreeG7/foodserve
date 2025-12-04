@@ -2,8 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { AuthContext } from '../App';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function AddEvent() {
   const { user, userType } = useContext(AuthContext);
@@ -37,7 +36,7 @@ function AddEvent() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`${API_URL}/events`, {
+      const response = await fetch(`${API_BASE_URL}/events`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

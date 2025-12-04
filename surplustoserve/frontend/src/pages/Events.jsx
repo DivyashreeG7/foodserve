@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function Events() {
   const [events, setEvents] = useState([]);
@@ -28,8 +27,8 @@ function Events() {
 
   const fetchEvents = async () => {
     try {
-      console.log('Fetching events from:', `${API_URL}/events`);
-      const response = await fetch(`${API_URL}/events`);
+      console.log('Fetching events from:', `${API_BASE_URL}/events`);
+      const response = await fetch(`${API_BASE_URL}/events`);
       const data = await response.json();
       console.log('Events response:', data);
       if (response.ok) {

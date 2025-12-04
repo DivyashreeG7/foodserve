@@ -2,8 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { AuthContext } from '../App';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function FoodList() {
   const { user, userType } = useContext(AuthContext);
@@ -28,7 +27,7 @@ function FoodList() {
 
   const fetchFoods = async () => {
     try {
-      const response = await fetch(`${API_URL}/foods/available`);
+      const response = await fetch(`${API_BASE_URL}/foods/available`);
       const data = await response.json();
       if (response.ok) {
         setFoods(data.foods);

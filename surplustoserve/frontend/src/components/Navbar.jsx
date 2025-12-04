@@ -1,8 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../App';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function Navbar() {
   const { user, userType, logout } = useContext(AuthContext);
@@ -17,7 +16,7 @@ function Navbar() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(`${API_URL}/stats`);
+      const response = await fetch(`${API_BASE_URL}/stats`);
       const data = await response.json();
       if (response.ok) {
         setStats({ donors: data.donors, ngos: data.ngos });

@@ -2,8 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { AuthContext } from '../App';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function FoodDetails() {
   const { id } = useParams();
@@ -25,7 +24,7 @@ function FoodDetails() {
 
   const fetchFood = async () => {
     try {
-      const response = await fetch(`${API_URL}/foods/${id}`);
+      const response = await fetch(`${API_BASE_URL}/foods/${id}`);
       const data = await response.json();
       if (response.ok) {
         setFood(data.food);
@@ -45,7 +44,7 @@ function FoodDetails() {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`${API_URL}/foods/${id}/claim`, {
+      const response = await fetch(`${API_BASE_URL}/foods/${id}/claim`, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${token}` }
       });

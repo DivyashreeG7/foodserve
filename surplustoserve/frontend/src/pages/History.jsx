@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function History() {
   const [history, setHistory] = useState([]);
@@ -13,7 +12,7 @@ function History() {
 
   const fetchHistory = async () => {
     try {
-      const response = await fetch(`${API_URL}/history`);
+      const response = await fetch(`${API_BASE_URL}/history`);
       const data = await response.json();
       if (response.ok) {
         setHistory(data.history);

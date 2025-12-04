@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function Home() {
   const [stats, setStats] = useState({ donors: 0, ngos: 0, availableFood: 0, completedDonations: 0 });
@@ -15,7 +14,7 @@ function Home() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(`${API_URL}/stats`);
+      const response = await fetch(`${API_BASE_URL}/stats`);
       const data = await response.json();
       if (response.ok) {
         setStats(data);

@@ -2,8 +2,7 @@ import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { AuthContext } from '../App';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function NGOVerifySecret() {
   const { user, userType } = useContext(AuthContext);
@@ -24,7 +23,7 @@ function NGOVerifySecret() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/ngos/validate-secret`, {
+      const response = await fetch(`${API_BASE_URL}/ngos/validate-secret`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ngoId: user.id, secretKey })

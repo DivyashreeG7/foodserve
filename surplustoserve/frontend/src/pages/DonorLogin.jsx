@@ -2,8 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { AuthContext } from '../App';
-
-const API_URL = import.meta.env.VITE_API_URL;
+import API_BASE_URL from '../api';
 
 function DonorLogin() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -22,7 +21,7 @@ function DonorLogin() {
     setLoading(true);
 
     try {
-      const response = await fetch(`${API_URL}/donors/login`, {
+      const response = await fetch(`${API_BASE_URL}/donors/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
